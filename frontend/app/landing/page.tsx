@@ -64,7 +64,7 @@ export default function LandingPage() {
                 <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
                     <div className="flex items-center gap-2">
                         <Image src="/carenet-logo.svg" alt="CareNet" width={32} height={32} />
-                        <span className="text-xl font-bold text-gray-900">CareNet</span>
+                        <span className="text-xl font-bold text-gray-900">Care<span className="ml-1">Net</span></span>
                     </div>
                     <Link
                         href="/"
@@ -277,7 +277,7 @@ export default function LandingPage() {
                 <div className="max-w-6xl mx-auto text-center">
                     <div className="flex items-center justify-center gap-2 mb-4">
                         <Image src="/carenet-logo.svg" alt="CareNet" width={24} height={24} />
-                        <span className="text-lg font-bold text-white">CareNet</span>
+                        <span className="text-lg font-bold text-white">Care<span className="ml-1">Net</span></span>
                     </div>
                     <p className="text-gray-500">
                         Because healthcare shouldn't be a guessing game.
