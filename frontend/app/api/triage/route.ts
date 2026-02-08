@@ -3,10 +3,7 @@ import { generateObject } from "ai";
 import { createOpenAI } from "@ai-sdk/openai";
 import { z } from "zod";
 
-const dedalus = createOpenAI({
-  apiKey: process.env.DEDALUS_API_KEY,
-  baseURL: "https://api.dedaluslabs.ai/v1",
-});
+// Provider initialized inside handler to avoid build-time errors
 
 const triageSchema = z.object({
   injuryCategory: z

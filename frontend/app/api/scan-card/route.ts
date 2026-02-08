@@ -1,9 +1,6 @@
 import OpenAI from "openai";
 
-const client = new OpenAI({
-  apiKey: process.env.DEDALUS_API_KEY,
-  baseURL: "https://api.dedaluslabs.ai/v1",
-});
+// Client initialized inside handler to avoid build-time errors if keys missing
 
 export async function POST(req: Request) {
   try {
@@ -24,6 +21,11 @@ export async function POST(req: Request) {
       });
       return demoResponse;
     }
+
+    const client = new OpenAI({
+      apiKey: process.env.DEDALUS_API_KEY,
+      baseURL: "https://api.dedaluslabs.ai/v1",
+    });
 
     const response = await client.chat.completions.create({
       model: "gpt-4o",
