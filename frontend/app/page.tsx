@@ -450,16 +450,7 @@ function PageContent() {
                   <DropdownMenuLabel className="font-semibold">Notifications</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <div className="max-h-96 overflow-y-auto">
-                    <DropdownMenuItem className="flex flex-col items-start gap-1 p-3 cursor-pointer">
-                      <div className="flex w-full justify-between items-center">
-                        <span className="font-medium text-sm">Appointment Confirmed</span>
-                        <span className="text-[10px] text-slate-400">2m ago</span>
-                      </div>
-                      <p className="text-xs text-slate-500 line-clamp-2">
-                        Your appointment at Mount Sinai Hospital has been confirmed for tomorrow at 10:00 AM.
-                      </p>
-                    </DropdownMenuItem>
-                    <DropdownMenuSeparator />
+
                     <DropdownMenuItem className="flex flex-col items-start gap-1 p-3 cursor-pointer">
                       <div className="flex w-full justify-between items-center">
                         <span className="font-medium text-sm">Welcome to CareNet</span>
