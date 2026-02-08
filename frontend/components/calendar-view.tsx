@@ -30,9 +30,9 @@ export function CalendarView() {
 
     const fetchAppointments = async () => {
         try {
-            const res = await fetch("http://localhost:8000/appointments");
-            if (res.ok) {
-                const data = await res.json();
+            const response = await fetch("/api/python/appointments");
+            if (response.ok) {
+                const data = await response.json();
                 setAppointments(data);
             }
         } catch (error) {

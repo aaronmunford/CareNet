@@ -183,7 +183,21 @@ export function HospitalCard({ hospital, rank, onViewDetails, onCallHospital, on
             <Button
               size="sm"
               className="gap-1.5 rounded-xl bg-green-600 text-xs font-semibold text-white hover:bg-green-700 shadow-sm transition-all hover:shadow-md"
-              onClick={(e) => { e.stopPropagation(); onBook(hospital); }}
+              onClick={async (e) => {
+                e.stopPropagation();
+                onBook(hospital);
+                try {
+                  const response = await fetch("/api/python/call-logs");
+                  if (response.ok) {
+                    // Handle success, e.g., log it or update UI
+                    console.log("Call log recorded successfully.");
+                  } else {
+                    console.error("Failed to record call log:", response.statusText);
+                  }
+                } catch (error) {
+                  console.error("Error recording call log:", error);
+                }
+              }}
             >
               <DollarSign className="h-3.5 w-3.5" />
               Pay Copay ($150)

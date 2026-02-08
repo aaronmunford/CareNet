@@ -202,7 +202,7 @@ function PageContent() {
         // If 404/failure, try direct backend as fallback
         if (!response.ok) {
           console.warn("Proxy failed, trying direct backend...");
-          response = await fetch(`http://localhost:8000/providers?${params}`);
+          response = await fetch(`/api/python/providers?${params}`);
         }
 
         if (response.ok) {
@@ -564,11 +564,11 @@ function PageContent() {
                           setUserProfile(DEFAULT_PROFILE);
                           setEditingProfile(DEFAULT_PROFILE);
                           localStorage.removeItem("caremap-user-profile");
-                    }}
-                  >
-                    <LogOut className="mr-2 h-4 w-4" />
-                    {t("nav.signout")}
-                  </DropdownMenuItem>
+                        }}
+                      >
+                        <LogOut className="mr-2 h-4 w-4" />
+                        {t("nav.signout")}
+                      </DropdownMenuItem>
                     </>
                   ) : (
                     <>

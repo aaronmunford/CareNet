@@ -293,38 +293,34 @@ export function AgentCallStep({
         <DialogContent className="sm:max-w-[500px]">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              <AlertTriangle className="h-5 w-5 text-amber-600" />
-              ElevenLabs API Keys Required
+              <PhoneCall className="h-5 w-5 text-blue-600" />
+              AI Booking Agent Not Available
             </DialogTitle>
             <DialogDescription className="space-y-4 pt-4">
               <p>
-                To use the AI booking agent feature, you need to configure your own ElevenLabs API credentials.
+                The AI booking agent feature requires ElevenLabs API configuration. This is an optional premium feature.
               </p>
 
-              <div className="rounded-lg border border-amber-200 bg-amber-50 p-4">
-                <p className="text-sm font-semibold text-amber-900 mb-2">Required Environment Variables:</p>
-                <ul className="space-y-1 text-xs font-mono text-amber-800">
-                  <li>• ELEVENLABS_API_KEY</li>
-                  <li>• ELEVENLABS_AGENT_ID</li>
-                  <li>• ELEVENLABS_AGENT_PHONE_NUMBER_ID</li>
+              <div className="rounded-lg border border-blue-200 bg-blue-50 p-4">
+                <p className="text-sm font-semibold text-blue-900 mb-2">You can still use CareNet to:</p>
+                <ul className="space-y-1 text-sm text-blue-800">
+                  <li>✓ Find nearby hospitals and urgent care</li>
+                  <li>✓ Check insurance coverage</li>
+                  <li>✓ Compare costs</li>
+                  <li>✓ Get directions</li>
+                  <li>✓ Call hospitals directly</li>
                 </ul>
               </div>
 
-              <div className="space-y-2">
-                <p className="text-sm font-semibold">How to get your API keys:</p>
-                <ol className="space-y-2 text-sm list-decimal list-inside">
-                  <li>Sign up at <a href="https://elevenlabs.io" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline inline-flex items-center gap-1">
-                    elevenlabs.io <ExternalLink className="h-3 w-3" />
-                  </a></li>
-                  <li>Create a Conversational AI agent</li>
-                  <li>Get your API key and agent credentials</li>
-                  <li>Add them to your <code className="bg-gray-100 px-1 py-0.5 rounded text-xs">frontend/.env.local</code> file</li>
-                  <li>Restart your development server</li>
-                </ol>
+              <div className="rounded-lg border border-amber-200 bg-amber-50 p-3">
+                <p className="text-xs font-semibold text-amber-900 mb-1">For App Owners:</p>
+                <p className="text-xs text-amber-800">
+                  To enable this feature, configure ELEVENLABS_API_KEY, ELEVENLABS_AGENT_ID, and ELEVENLABS_AGENT_PHONE_NUMBER_ID in your Vercel environment variables.
+                </p>
               </div>
 
-              <p className="text-xs text-muted-foreground mt-4">
-                For detailed setup instructions, see <code className="bg-gray-100 px-1 py-0.5 rounded">DEPLOYMENT.md</code>
+              <p className="text-xs text-muted-foreground">
+                💡 <strong>Tip:</strong> You can call the hospital directly using the phone number shown on the hospital card.
               </p>
             </DialogDescription>
           </DialogHeader>

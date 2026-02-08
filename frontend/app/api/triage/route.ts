@@ -80,6 +80,18 @@ export async function POST(req: Request) {
       );
     }
 
+    // Check if API key is configured
+    if (!process.env.DEDALUS_API_KEY) {
+      console.warn("DEDALUS_API_KEY not configured - using demo mode");
+      // Fallback to demo mode
+      const demoResponse = await fetch(new URL('/api/triage/demo', req.url), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ transcript }),
+      });
+      return demoResponse;
+    }
+
     const { object } = await generateObject({
       model: dedalus("gpt-4o"),
       schema: triageSchema,

@@ -111,6 +111,20 @@ Pay your copay securely through the app before you arrive. No surprise bills.
 
 ---
 
+## 💰 Cost & API Keys
+
+**TL;DR:** The app works for free without API keys. Add them when you want real AI features.
+
+| Setup | Features | Monthly Cost |
+|-------|----------|--------------|
+| **No API keys** | Hospital search, maps, demo AI | $0 |
+| **+ Dedalus** | Real card scanning & triage | ~$20 for 1,000 users |
+| **+ ElevenLabs** | AI booking agent | +$60 for 1,000 users |
+
+📚 **[Read the complete API Keys & Cost Guide →](./API_KEYS.md)**
+
+---
+
 ## 🚀 Getting Started
 
 ### Prerequisites

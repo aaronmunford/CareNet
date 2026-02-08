@@ -13,6 +13,18 @@ export async function POST(req: Request) {
       return Response.json({ error: "No image provided" }, { status: 400 });
     }
 
+    // Check if API key is configured
+    if (!process.env.DEDALUS_API_KEY) {
+      console.warn("DEDALUS_API_KEY not configured - using demo mode");
+      // Fallback to demo mode
+      const demoResponse = await fetch(new URL('/api/scan-card/demo', req.url), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ image }),
+      });
+      return demoResponse;
+    }
+
     const response = await client.chat.completions.create({
       model: "gpt-4o",
       messages: [

@@ -2,14 +2,19 @@
 
 This guide covers deploying CareNet to production on Vercel.
 
+## 📋 Quick Start
+
+**You can deploy CareNet immediately without any API keys!** The app works with demo mode for AI features. Add API keys later when you're ready for real AI capabilities.
+
+📚 **[Read the complete API Keys & Cost Guide →](./API_KEYS.md)** for detailed pricing and setup.
+
 ## Prerequisites
 
 1. **Vercel Account**: Sign up at [vercel.com](https://vercel.com)
 2. **GitHub Repository**: Push your code to GitHub
-3. **API Keys**: Obtain the following:
-   - Dedalus API Key (for AI features)
-   - ElevenLabs API Key and Agent ID (for voice booking)
-   - Flowglad Secret Key (for payments)
+3. **API Keys** (Optional - see below):
+   - Dedalus API Key (for real card scanning & triage) - ~$20/mo for 1,000 users
+   - ElevenLabs API Key and Agent ID (for AI booking agent) - ~$60/mo for 1,000 users
 
 ## Step 1: Prepare Your Repository
 
@@ -82,19 +87,35 @@ vercel
 4. Configure environment variables (see below)
 5. Click "Deploy"
 
-## Step 4: Configure Environment Variables
+## Step 4: Configure Environment Variables (Optional)
 
-In your Vercel project settings, add the following environment variables:
+**The app works without any API keys!** You can deploy first and add keys later.
 
-### Required Variables
+### Option 1: Deploy Without API Keys (Free)
+
+No configuration needed! Your app will:
+- ✅ Show all hospitals and facilities
+- ✅ Display cost estimates and insurance info
+- ✅ Provide maps and directions
+- ✅ Use demo mode for card scanning (shows sample data)
+- ✅ Use demo mode for voice triage (keyword-based)
+- ✅ Allow direct phone calls to hospitals
+
+**Monthly cost: $0**
+
+### Option 2: Add Real AI Features
+
+In your Vercel project settings → Environment Variables, add:
+
+#### For Real Card Scanning & Voice Triage (~$20/mo for 1k users)
 
 ```
 DEDALUS_API_KEY=your-dedalus-api-key-here
 ```
 
-### Required for AI Booking Agent Feature
+Get your key at [dedaluslabs.ai](https://dedaluslabs.ai)
 
-To enable the "Book with CareNet Agent" feature, you must configure ElevenLabs:
+#### For AI Booking Agent (~$60/mo for 1k users)
 
 ```
 ELEVENLABS_API_KEY=your-elevenlabs-api-key-here
@@ -111,7 +132,7 @@ ELEVENLABS_AGENT_PHONE_NUMBER_ID=your-phone-number-id-here
 5. Get your API key from Settings → API Keys
 6. Get your Agent ID and Phone Number ID from the agent settings
 
-**Note:** Without these credentials, the AI booking feature will not work. Users will see a helpful error message guiding them to set up their own credentials.
+**Recommendation:** Start without API keys (free), add Dedalus when you have users, add ElevenLabs when you need booking automation.
 
 ### Optional Variables
 
