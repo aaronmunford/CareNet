@@ -9,3 +9,5 @@ from backend.main import app
 
 # Vercel needs a variable named 'app' to be the entry point
 # We import the existing app from backend.main
+# Set root_path to match the Vercel rewrite prefix
+app.root_path = "/api/python"

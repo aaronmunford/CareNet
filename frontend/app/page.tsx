@@ -35,8 +35,8 @@ import { LanguageProvider, useTranslation } from "@/components/language-provider
 import { LANGUAGES } from "@/lib/languages";
 import { useAuth } from "@/lib/auth-context";
 
-// Use relative path '/api' which will be proxied by Next.js rewrites
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "/api";
+// Use relative path '/api/python' which will be handled by next.config.mjs rewrites locally and vercel.json in prod
+const API_URL = "/api/python";
 
 type AppStep = "landing" | "insurance" | "incident" | "results" | "agent-call";
 type FacilityMode = "all" | "emergency" | "urgent-care" | "dentist" | "physical-therapy";
@@ -197,7 +197,7 @@ function PageContent() {
         }
 
         // Try proxy first
-        let response = await fetch(`${API_URL}/hospitals?${params}`);
+        let response = await fetch(`${API_URL}/providers?${params}`);
 
         // If 404/failure, try direct backend as fallback
         if (!response.ok) {
