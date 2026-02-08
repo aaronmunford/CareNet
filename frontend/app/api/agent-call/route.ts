@@ -173,10 +173,11 @@ export async function POST(req: Request) {
     if (!elevenLabsApiKey || !agentId || !agentPhoneNumberId) {
       return Response.json(
         {
-          error:
-            "Missing ElevenLabs configuration. Set ELEVENLABS_API_KEY, ELEVENLABS_AGENT_ID, and ELEVENLABS_AGENT_PHONE_NUMBER_ID.",
+          error: "ELEVENLABS_NOT_CONFIGURED",
+          message:
+            "ElevenLabs API credentials are required to use the AI booking agent. Please configure ELEVENLABS_API_KEY, ELEVENLABS_AGENT_ID, and ELEVENLABS_AGENT_PHONE_NUMBER_ID in your environment variables.",
         },
-        { status: 500 }
+        { status: 400 }
       );
     }
 

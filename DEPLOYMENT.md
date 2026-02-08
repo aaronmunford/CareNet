@@ -90,10 +90,28 @@ In your Vercel project settings, add the following environment variables:
 
 ```
 DEDALUS_API_KEY=your-dedalus-api-key-here
+```
+
+### Required for AI Booking Agent Feature
+
+To enable the "Book with CareNet Agent" feature, you must configure ElevenLabs:
+
+```
 ELEVENLABS_API_KEY=your-elevenlabs-api-key-here
 ELEVENLABS_AGENT_ID=your-agent-id-here
 ELEVENLABS_AGENT_PHONE_NUMBER_ID=your-phone-number-id-here
 ```
+
+**How to get ElevenLabs credentials:**
+
+1. Sign up at [elevenlabs.io](https://elevenlabs.io)
+2. Navigate to "Conversational AI" in the dashboard
+3. Create a new AI agent for appointment booking
+4. Configure the agent with appropriate prompts for medical appointment scheduling
+5. Get your API key from Settings → API Keys
+6. Get your Agent ID and Phone Number ID from the agent settings
+
+**Note:** Without these credentials, the AI booking feature will not work. Users will see a helpful error message guiding them to set up their own credentials.
 
 ### Optional Variables
 

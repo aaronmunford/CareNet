@@ -145,11 +145,15 @@ npm run dev
 
 Create `frontend/.env.local`:
 ```
-DEDALUS_API_KEY=your_openai_api_key
-ELEVENLABS_API_KEY=your_elevenlabs_key
+DEDALUS_API_KEY=your_dedalus_api_key
+
+# Required for AI booking agent feature
+ELEVENLABS_API_KEY=your_elevenlabs_api_key
 ELEVENLABS_AGENT_ID=your_agent_id
-FLOWGLAD_SECRET_KEY=your_flowglad_key
+ELEVENLABS_AGENT_PHONE_NUMBER_ID=your_phone_number_id
 ```
+
+**Note:** The AI booking agent feature requires ElevenLabs API credentials. Without them, users will see a setup guide when attempting to book appointments.
 
 ---
 

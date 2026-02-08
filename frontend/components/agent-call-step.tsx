@@ -3,6 +3,13 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import type { Hospital, IncidentInfo, InsuranceInfo } from "@/lib/types";
 import { CARE_TYPE_LABELS, PLAN_TYPE_LABELS, PROVIDER_LABELS } from "@/lib/types";
 import {
@@ -15,6 +22,7 @@ import {
   PhoneCall,
   RotateCcw,
   Shield,
+  ExternalLink,
 } from "lucide-react";
 
 type CallState = "calling" | "success" | "error";
@@ -67,6 +75,7 @@ export function AgentCallStep({
   const [error, setError] = useState<string | null>(null);
   const [callResponse, setCallResponse] = useState<AgentCallResponse | null>(null);
   const [attempt, setAttempt] = useState(0);
+  const [showConfigDialog, setShowConfigDialog] = useState(false);
 
   const patientSummary = useMemo(() => {
     const symptoms = incident.symptoms.length > 0 ? incident.symptoms.join(", ") : "not specified";
@@ -100,6 +109,13 @@ export function AgentCallStep({
       const json = await res.json().catch(() => null);
 
       if (!res.ok) {
+        // Check if this is the ElevenLabs configuration error
+        if (json?.error === "ELEVENLABS_NOT_CONFIGURED") {
+          setCallState("error");
+          setShowConfigDialog(true);
+          return;
+        }
+
         const errorMessage =
           stringifyError(json?.error) ||
           stringifyError(json?.providerResponse) ||
@@ -271,6 +287,57 @@ export function AgentCallStep({
           </Button>
         </div>
       </div>
+
+      {/* ElevenLabs Configuration Dialog */}
+      <Dialog open={showConfigDialog} onOpenChange={setShowConfigDialog}>
+        <DialogContent className="sm:max-w-[500px]">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <AlertTriangle className="h-5 w-5 text-amber-600" />
+              ElevenLabs API Keys Required
+            </DialogTitle>
+            <DialogDescription className="space-y-4 pt-4">
+              <p>
+                To use the AI booking agent feature, you need to configure your own ElevenLabs API credentials.
+              </p>
+
+              <div className="rounded-lg border border-amber-200 bg-amber-50 p-4">
+                <p className="text-sm font-semibold text-amber-900 mb-2">Required Environment Variables:</p>
+                <ul className="space-y-1 text-xs font-mono text-amber-800">
+                  <li>• ELEVENLABS_API_KEY</li>
+                  <li>• ELEVENLABS_AGENT_ID</li>
+                  <li>• ELEVENLABS_AGENT_PHONE_NUMBER_ID</li>
+                </ul>
+              </div>
+
+              <div className="space-y-2">
+                <p className="text-sm font-semibold">How to get your API keys:</p>
+                <ol className="space-y-2 text-sm list-decimal list-inside">
+                  <li>Sign up at <a href="https://elevenlabs.io" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline inline-flex items-center gap-1">
+                    elevenlabs.io <ExternalLink className="h-3 w-3" />
+                  </a></li>
+                  <li>Create a Conversational AI agent</li>
+                  <li>Get your API key and agent credentials</li>
+                  <li>Add them to your <code className="bg-gray-100 px-1 py-0.5 rounded text-xs">frontend/.env.local</code> file</li>
+                  <li>Restart your development server</li>
+                </ol>
+              </div>
+
+              <p className="text-xs text-muted-foreground mt-4">
+                For detailed setup instructions, see <code className="bg-gray-100 px-1 py-0.5 rounded">DEPLOYMENT.md</code>
+              </p>
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex justify-end gap-2 mt-4">
+            <Button variant="outline" onClick={() => setShowConfigDialog(false)}>
+              Close
+            </Button>
+            <Button onClick={onBack}>
+              Back to Results
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
