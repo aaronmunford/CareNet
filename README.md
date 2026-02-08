@@ -4,9 +4,9 @@
 
 CareNet is an AI-powered healthcare navigation platform that helps Americans find nearby medical facilities, understand their insurance coverage, and book appointments—all in seconds.
 
-![CareNet App Screenshot](screenshot-main.png)
-
-![CareNet Architecture](carenet_architecture.png)
+<p align="center">
+  <img src="screenshot-main.png" alt="CareNet App Screenshot" width="700">
+</p>
 
 ---
 
@@ -90,6 +90,8 @@ Pay your copay securely through the app before you arrive. No surprise bills.
 ---
 
 ## 🏗️ Tech Stack
+
+![CareNet Architecture](carenet_architecture.png)
 
 | Layer | Technology |
 |-------|------------|
