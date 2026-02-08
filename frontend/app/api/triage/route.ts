@@ -89,6 +89,12 @@ export async function POST(req: Request) {
       return demoResponse;
     }
 
+    // Initialize provider inside handler to avoid build-time errors
+    const dedalus = createOpenAI({
+      apiKey: process.env.DEDALUS_API_KEY,
+      baseURL: "https://api.dedaluslabs.ai/v1",
+    });
+
     const { object } = await generateObject({
       model: dedalus("gpt-4o"),
       schema: triageSchema,
