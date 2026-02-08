@@ -249,18 +249,6 @@ export function ResultsScreen({
       result = result.filter((h) => filters.insuranceConfidence.includes(h.insuranceConfidence));
     }
     result.sort((a, b) => {
-      // Priority for demo scenario: NYC Health + Hospitals/Harlem first, Mount Sinai Morningside second
-      const aIsHarlem = a.id === "9"; // NYC Health + Hospitals/Harlem
-      const bIsHarlem = b.id === "9";
-      const aIsMountSinai = a.id === "15"; // Mount Sinai Morningside
-      const bIsMountSinai = b.id === "15";
-
-      if (aIsHarlem && !bIsHarlem) return -1;
-      if (!aIsHarlem && bIsHarlem) return 1;
-      if (aIsMountSinai && !bIsMountSinai && !bIsHarlem) return -1;
-      if (!aIsMountSinai && bIsMountSinai && !aIsHarlem) return 1;
-
-      // For other hospitals, use standard sorting
       switch (sort) {
         case "closest":
           // Only sort by distance if user location is available

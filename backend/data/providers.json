@@ -137,7 +137,7 @@
         "copay_max": null
       }
     },
-    "logo": "/logos/lenox-hill.png"
+    "logo": "/logos/northwell.png"
   },
   {
     "id": 6,
@@ -986,7 +986,7 @@
         "copay_max": 200
       }
     },
-    "logo": "https://ui-avatars.com/api/?name=LI&background=4F46E5&color=fff&size=128&bold=true&font-size=0.4"
+    "logo": "/logos/northwell.png"
   },
   {
     "id": 29,
@@ -1322,7 +1322,7 @@
         "copay_max": null
       }
     },
-    "logo": "https://ui-avatars.com/api/?name=SI&background=4F46E5&color=fff&size=128&bold=true&font-size=0.4"
+    "logo": "/logos/northwell.png"
   },
   {
     "id": 41,
@@ -6035,7 +6035,7 @@
         "copay_max": 75
       }
     },
-    "logo": "/logos/lenox-hill.png"
+    "logo": "/logos/northwell.png"
   },
   {
     "id": 213,

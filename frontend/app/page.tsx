@@ -677,10 +677,7 @@ function PageContent() {
             data={incident}
             onChange={setIncident}
             // onBack={() => { }} // Removed back button as requested
-            onSubmit={() => {
-              setFacilityMode("emergency");
-              setStep("results");
-            }}
+            onSubmit={() => setStep("results")}
           />
         )}
         {step === "insurance" && (

@@ -153,24 +153,24 @@ FLOWGLAD_SECRET_KEY=your_flowglad_key
 
 ---
 
-## 🎬 Demo Scenario
+## 🎬 Example Use Case
 
-**Meet Raymond, a 77-year-old resident of Harlem.**
+**A patient needs urgent medical care.**
 
-Raymond slipped on ice and thinks he may have broken his arm. He's in pain and needs help fast.
+They slipped and think they may have broken their arm. They're in pain and need help fast.
 
-1. **Opens CareNet** on his phone
-2. **Scans his Anthem insurance card** with the camera
-3. **Selects "Broken bone / severe injury"** as his emergency type
-4. **Sees two nearby options:**
-   - NYC Health + Hospitals/Harlem: 0.5 mi, Out of Network, ~$3,500
-   - Mount Sinai Morningside: 0.6 mi, In Network, ~$150
-5. **Clicks "Book with CareNet Agent"** on Mount Sinai
-6. **The AI agent calls** and books his appointment for today
-7. **Pays his $150 copay** through the app
-8. **Gets directions** and arrives at Mount Sinai
+1. **Opens CareNet** on their phone
+2. **Scans their insurance card** with the camera
+3. **Selects "Broken bone / severe injury"** as their emergency type
+4. **Sees nearby options** with cost estimates:
+   - Hospital A: 0.5 mi, Out of Network, ~$3,500
+   - Hospital B: 0.6 mi, In Network, ~$150
+5. **Clicks "Book with CareNet Agent"** on the in-network hospital
+6. **The AI agent calls** and books an appointment for today
+7. **Pays the copay** through the app
+8. **Gets directions** and arrives at the facility
 
-**Result:** Raymond saved $3,350 and got faster care—all because he knew which hospital to choose.
+**Result:** Significant cost savings and faster care by making an informed choice.
 
 ---
 

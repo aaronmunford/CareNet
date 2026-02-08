@@ -1,3 +1,10 @@
+import OpenAI from "openai";
+
+const client = new OpenAI({
+  apiKey: process.env.DEDALUS_API_KEY,
+  baseURL: "https://api.dedaluslabs.ai/v1",
+});
+
 export async function POST(req: Request) {
   try {
     const { image } = await req.json();
@@ -6,18 +13,42 @@ export async function POST(req: Request) {
       return Response.json({ error: "No image provided" }, { status: 400 });
     }
 
-    // Fast scan simulation - 2.5 seconds for demo
-    await new Promise(resolve => setTimeout(resolve, 2500));
+    const response = await client.chat.completions.create({
+      model: "gpt-4o",
+      messages: [
+        {
+          role: "user",
+          content: [
+            {
+              type: "text",
+              text: `Extract insurance information from this insurance card image. Return a JSON object with these fields:
+- provider: one of "aetna", "anthem", "cigna", "united", "medicare", "medicaid", or "other"
+- planType: one of "hmo", "ppo", "epo", "medicaid-managed", "medicare-advantage", "original-medicare", or "unknown"
+- networkName: the network name if visible, or null
+- memberZip: ZIP code if visible, or null
+- patientName: the patient/member name if visible, or null
+- dateOfBirth: the date of birth in YYYY-MM-DD format if visible, or null
 
-    // Hardcoded demo data for presentation
-    const data = {
-      provider: "anthem",
-      planType: "ppo",
-      networkName: "Blue Cross Blue Shield",
-      memberZip: "10027",
-      patientName: "Raymond",
-      dateOfBirth: "1948-10-04", // October 4, 1948
-    };
+Return ONLY the JSON object, no other text.`,
+            },
+            {
+              type: "image_url",
+              image_url: { url: image },
+            },
+          ],
+        },
+      ],
+      max_tokens: 200,
+    });
+
+    const content = response.choices[0]?.message?.content || "{}";
+    // Parse JSON from response, handling potential markdown code blocks
+    const jsonStr = content.replace(/```json\n?|\n?```/g, "").trim();
+    const data = JSON.parse(jsonStr);
+
+    if (data.provider) {
+      data.provider = data.provider.trim().toLowerCase();
+    }
 
     return Response.json({ data });
   } catch (error) {
