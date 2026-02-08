@@ -5,6 +5,10 @@
 CareNet is an AI-powered healthcare navigation platform that helps Americans find nearby medical facilities, understand their insurance coverage, and book appointments—all in seconds.
 
 <p align="center">
+  <img src="carenet.gif" alt="CareNet Demo" width="700">
+</p>
+
+<p align="center">
   <img src="screenshot-main.png" alt="CareNet App Screenshot" width="700">
 </p>
 
