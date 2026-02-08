@@ -91,14 +91,16 @@ interface ResultsScreenProps {
   userLocation: { lat: number; lng: number; label: string } | null;
   onUserLocationChange: (loc: { lat: number; lng: number; label: string } | null) => void;
   loading?: boolean;
-  facilityMode?: "all" | "emergency" | "urgent-care";
+  facilityMode?: "all" | "emergency" | "urgent-care" | "dentist" | "physical-therapy";
   debugUrl?: string; // Add debug URL prop
   error?: string | null;
 }
 
 const HOSPITAL_CAPABILITIES = ["Trauma I", "Trauma II", "Stroke Center", "Burn Center", "Pediatric"];
 const URGENT_CARE_CAPABILITIES = ["Walk-in", "X-Ray", "Labs", "Stitches", "Pediatric", "After Hours"];
-const ALL_CAPABILITIES = Array.from(new Set([...HOSPITAL_CAPABILITIES, ...URGENT_CARE_CAPABILITIES]));
+const DENTIST_CAPABILITIES = ["Pediatric", "Emergency", "Cosmetic", "Surgery"];
+const PT_CAPABILITIES = ["Sports", "Post-Op", "Geriatric", "Pediatric"];
+const ALL_CAPABILITIES = Array.from(new Set([...HOSPITAL_CAPABILITIES, ...URGENT_CARE_CAPABILITIES, ...DENTIST_CAPABILITIES, ...PT_CAPABILITIES]));
 const CONFIDENCE_OPTIONS: InsuranceConfidence[] = ["verified", "likely", "unknown"];
 
 // Haversine formula to calculate distance between two coordinates in miles
@@ -149,7 +151,11 @@ export function ResultsScreen({
       ? ALL_CAPABILITIES
       : facilityMode === "emergency"
         ? HOSPITAL_CAPABILITIES
-        : URGENT_CARE_CAPABILITIES;
+        : facilityMode === "urgent-care"
+          ? URGENT_CARE_CAPABILITIES
+          : facilityMode === "dentist"
+            ? DENTIST_CAPABILITIES
+            : PT_CAPABILITIES;
 
   const [sort, setSort] = useState<SortOption>("closest");
   const [selectedHospitalId, setSelectedHospitalId] = useState<string | null>(null);
@@ -244,10 +250,10 @@ export function ResultsScreen({
     }
     result.sort((a, b) => {
       // Priority for demo scenario: NYC Health + Hospitals/Harlem first, Mount Sinai Morningside second
-      const aIsHarlem = a.id === 9; // NYC Health + Hospitals/Harlem
-      const bIsHarlem = b.id === 9;
-      const aIsMountSinai = a.id === 15; // Mount Sinai Morningside
-      const bIsMountSinai = b.id === 15;
+      const aIsHarlem = a.id === "9"; // NYC Health + Hospitals/Harlem
+      const bIsHarlem = b.id === "9";
+      const aIsMountSinai = a.id === "15"; // Mount Sinai Morningside
+      const bIsMountSinai = b.id === "15";
 
       if (aIsHarlem && !bIsHarlem) return -1;
       if (!aIsHarlem && bIsHarlem) return 1;
