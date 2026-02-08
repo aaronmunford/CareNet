@@ -1,0 +1,16 @@
+/* OpenAI-style mesh gradient */
+.bg-openai-gradient {
+    background-color: #ffffff;
+    background-image:
+        radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 1) 0, transparent 50%),
+        radial-gradient(at 50% 0%, hsla(225, 39%, 30%, 1) 0, transparent 50%),
+        radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 1) 0, transparent 50%);
+    /* Actually OpenAI's recent branding is more vibrant */
+    /* Let's use a vibrant colorful mesh */
+    background-image:
+        radial-gradient(at 0% 0%, hsla(343, 90%, 90%, 1) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, hsla(39, 100%, 85%, 1) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, hsla(339, 90%, 90%, 1) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, hsla(259, 90%, 90%, 1) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, hsla(180, 100%, 85%, 1) 0px, transparent 50%);
+}

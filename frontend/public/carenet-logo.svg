@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 40">
+  <!-- Map pin with medical cross -->
+  <g>
+    <!-- Pin body -->
+    <path d="M16 4C10.477 4 6 8.477 6 14c0 7.5 10 18 10 18s10-10.5 10-18c0-5.523-4.477-10-10-10z" fill="#2563eb"/>
+    <!-- Cross inside pin -->
+    <path d="M14 11h4v3h3v4h-3v3h-4v-3h-3v-4h3v-3z" fill="white"/>
+  </g>
+  <!-- Text -->
+  <text x="32" y="26" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="700" fill="#0f172a">Care</text>
+  <text x="72" y="26" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="700" fill="#2563eb">Net</text>
+</svg>
