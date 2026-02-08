@@ -73,7 +73,9 @@ Pay your copay directly through the app with Flowglad-powered secure payment pro
 ### 1. Tell Us About Your Emergency
 Select your injury type (broken bone, chest pain, dental emergency, etc.) and severity level. CareNet uses this to recommend the right type of facility.
 
-![AI Triage Screenshot](screenshot-triage.png)
+<p align="center">
+  <img src="screenshot-triage.png" alt="AI Triage Screenshot" width="400">
+</p>
 
 ### 2. Scan Your Insurance Card
 Take a photo of your insurance card or manually enter your information. Our AI identifies your provider (Anthem, Aetna, United, etc.) and plan type.
